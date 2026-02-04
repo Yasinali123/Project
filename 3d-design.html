@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>3D House Designs</title>
+  <link rel="stylesheet" href="css/3d-design.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand">Yasinova</a>
+      <nav class="small-nav">
+        <a href="professionals.html">Professionals</a>
+        <a href="3d-design.html" class="active">3D Designs</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container main">
+    <section class="intro">
+      <h1>3D House Design Gallery</h1>
+      <p class="muted"></p>
+    </section>
+
+    <section class="controls">
+      <div class="control-row">
+        <input id="search" type="search" placeholder="Search designs, rooms, tags..." aria-label="Search designs" />
+
+        <select id="category">
+          <option value="all">All Categories</option>
+          <option value="interior">Interior</option>
+          <option value="exterior">Exterior</option>
+          <option value="floorplan">Floor Plan</option>
+        </select>
+
+        <select id="mediaType">
+          <option value="all">All Media</option>
+          <option value="photo">Photo</option>
+          <option value="video">Video</option>
+        </select>
+
+        <button id="clearFilters" class="btn secondary">Clear</button>
+      </div>
+    </section>
+
+    <section id="gallery" class="gallery" aria-live="polite"></section>
+
+    <div id="lightbox" class="lightbox" aria-hidden="true">
+      <div class="lightbox-content">
+        <button id="lbClose" class="lb-close" aria-label="Close">✕</button>
+        <div id="lbMedia" class="lb-media"></div>
+        <div id="lbCaption" class="lb-caption"></div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <small>© 2026 Yasinova — 3D House Designs</small>
+    </div>
+  </footer>
+
+  <script src="js/3d-design.js" defer></script>
+</body>
+</html>

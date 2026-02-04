@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Professionals — YASINOVA</title>
+  <link rel="stylesheet" href="css/professionals.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a class="navbar-brand" href="index.html">
+        <span class="brand-icon">🏗️</span>
+        <span class="brand-text">YASINOVA</span>
+      </a>
+      
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="navbar-links" id="navMenu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="products.html" class="nav-link">Products</a></li>
+        <li><a href="3d-design.html" class="nav-link">3D Designs</a></li>
+        <li><a href="professionals.html" class="nav-link active">Professionals</a></li>
+        <li><a href="cart.html" class="nav-link"><span class="cart-icon">🛒</span> Cart</a></li>
+        <li class="nav-divider"></li>
+        <li><a href="auth/login.html" class="nav-link btn-login">Login</a></li>
+        <li><a href="auth/signup.html" class="nav-link btn-signup">Sign Up</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container">
+      <h1>Find Trusted Professionals</h1>
+      <p class="lead">Search, filter and connect with builders, engineers, architects and designers.</p>
+    </div>
+  </header>
+
+  <main class="container professionals-page">
+
+    <section class="controls">
+      <div class="search-wrap">
+        <label for="search" class="visually-hidden">Search professionals</label>
+        <input id="search" type="search" placeholder="Search name, city, specialty..." autocomplete="off">
+        <button id="clearSearch" title="Clear">✖</button>
+      </div>
+
+      <div class="filters">
+        <select id="category">
+          <option value="">All categories</option>
+          <option value="builder">Builders</option>
+          <option value="engineer">Engineers</option>
+          <option value="architect">Architects</option>
+          <option value="interior_designer">Designers</option>
+        </select>
+
+        <select id="sort">
+          <option value="rating">Top rated</option>
+          <option value="experience">Most experienced</option>
+          <option value="fee_low">Lowest fee</option>
+        </select>
+
+        <label class="tiny"><input id="verified" type="checkbox"> Verified only</label>
+      </div>
+    </section>
+
+    <section class="results">
+      <div id="grid" class="grid"></div>
+      <div id="empty" class="empty" hidden>
+        <div class="emoji">🔍</div>
+        <h3>No results</h3>
+        <p>Try adjusting filters or search terms.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        
+        <div class="footer-col">
+          <h4>About YASINOVA</h4>
+          <ul>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#mission">Our Mission</a></li>
+            <li><a href="#blog">Blog</a></li>
+            <li><a href="#press">Press</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>For Professionals</h4>
+          <ul>
+            <li><a href="#become-pro">Become a Professional</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#resources">Resources</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#help">Help Center</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+            <li><a href="#safety">Safety & Trust</a></li>
+            <li><a href="#report">Report Issue</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <div class="social-links">
+            <a href="#facebook" class="social-icon" title="Facebook">f</a>
+            <a href="#twitter" class="social-icon" title="Twitter">𝕏</a>
+            <a href="#linkedin" class="social-icon" title="LinkedIn">in</a>
+            <a href="#instagram" class="social-icon" title="Instagram">📷</a>
+          </div>
+          <p class="contact-info">📞 +91 1234-567-890<br>📧 support@yasinova.com</p>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 YASINOVA Marketplace. All rights reserved.</p>
+        <div class="footer-links-bottom">
+          <a href="#privacy">Privacy Policy</a>
+          <a href="#terms">Terms of Service</a>
+          <a href="#cookies">Cookie Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="js/professionals.js"></script>
+</body>
+</html>

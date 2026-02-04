@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YASINOVA - Building Materials Marketplace</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <style>
+        .hero{position:relative; overflow:hidden;}
+        .hero-image{display:none; position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.9; z-index:0;}
+        .hero-bg-blob{position:absolute; border-radius:50%; filter:blur(100px); animation:float 8s infinite ease-in-out; opacity:0.3;}
+        .hero-bg-blob-1{width:400px; height:400px; background:linear-gradient(135deg, #0ea5e9, #06b6d4); top:-100px; right:-100px; animation:float 8s infinite ease-in-out;}
+        .hero-bg-blob-2{width:300px; height:300px; background:linear-gradient(135deg, #ff6b35, #f97316); bottom:-50px; left:-50px; animation:float 10s infinite ease-in-out 2s;}
+        .hero-bg-blob-3{width:250px; height:250px; background:linear-gradient(135deg, #8b5cf6, #a78bfa); top:50%; right:10%; animation:float 12s infinite ease-in-out 4s;}
+        @keyframes float{0%, 100%{transform:translate(0, 0);} 50%{transform:translate(30px, -30px);}}
+        .hero-content{position:relative; z-index:10;}
+        .hero-grid-overlay{position:absolute; top:0; left:0; width:100%; height:100%; background-image:linear-gradient(0deg, transparent 24%, rgba(255,255,255,.05) 25%, rgba(255,255,255,.05) 26%, transparent 27%, transparent 74%, rgba(255,255,255,.05) 75%, rgba(255,255,255,.05) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(255,255,255,.05) 25%, rgba(255,255,255,.05) 26%, transparent 27%, transparent 74%, rgba(255,255,255,.05) 75%, rgba(255,255,255,.05) 76%, transparent 77%, transparent); background-size:50px 50px; z-index:1; opacity:0.3;}
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-brand">
+                <h1>YASINOVA</h1>
+                <p class="tagline">Building Materials Marketplace</p>
+            </div>
+            <ul class="navbar-menu" id="navbarMenu">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="products.html">Marketplace</a></li>
+                <li><a href="3d-design.html">3D Designs</a></li>
+                <li><a href="professionals.html">Professionals</a></li>
+                <li><a href="about.html">About</a></li>
+                <li id="authMenu">
+                    <a href="auth/login.html">Login</a> | 
+                    <a href="auth/signup.html">Sign Up</a>
+                </li>
+                <li id="userMenu" style="display: none;">
+                    <a href="#" id="userDropdown">Account ▼</a>
+                    <div class="dropdown-menu">
+                        <a href="dashboard.html">Dashboard</a>
+                        <a href="cart.html">Cart</a>
+                        <a href="orders.html">Orders</a>
+                        <a href="#" id="logoutBtn">Logout</a>
+                    </div>
+                </li>
+            </ul>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-grid-overlay"></div>
+        <div class="hero-bg-blob hero-bg-blob-1"></div>
+        <div class="hero-bg-blob hero-bg-blob-2"></div>
+        <div class="hero-bg-blob hero-bg-blob-3"></div>
+        <img src="images/hero1.jpg" alt="Construction materials and professionals" class="hero-image">
+        <div class="hero-content">
+            <h2>Building the Future, One Material at a Time</h2>
+            <p>Connect with trusted suppliers, professionals, and builders on India's premier construction materials marketplace</p>
+            <div class="hero-buttons">
+                <a href="products.html" class="btn btn-primary">Browse Materials</a>
+                <a href="professionals.html" class="btn btn-secondary">Find Professionals</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2>Why Choose YASINOVA?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🏗️</div>
+                    <h3>Legal & Transparent</h3>
+                    <p>Government-authorized suppliers with complete transparency in sourcing and pricing</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3>Verified Professionals</h3>
+                    <p>Connect with verified engineers, architects, and interior designers near you</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3>Best Prices</h3>
+                    <p>Direct from suppliers - No middlemen, lowest prices guaranteed</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📦</div>
+                    <h3>Fast Delivery</h3>
+                    <p>Reliable delivery with real-time tracking to your project site</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Secure Payments</h3>
+                    <p>Safe transactions through UPI, Card, and COD payment options</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>BIM Integration</h3>
+                    <p>Auto-calculate material requirements from your 3D models</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories">
+        <div class="container">
+            <h2>Shop by Category</h2>
+            <div class="categories-grid" id="categoriesGrid">
+                <!-- Categories will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest Products -->
+    <section class="latest-products">
+        <div class="container">
+            <h2>Latest Products</h2>
+            <div class="products-grid" id="productsGrid">
+                <!-- Products will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="container">
+            <h2>About YASINOVA</h2>
+            <div id="aboutSection"><!-- About content injected by JS --></div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <h2>What Our Users Say</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p>"YASINOVA saved us 30% on material costs. Excellent service!"</p>
+                    <p class="author">- Rajesh Kumar, Builder</p>
+                </div>
+                <div class="testimonial-card">
+                    <p>"Found the best engineer for my project through YASINOVA. Highly recommended!"</p>
+                    <p class="author">- Priya Singh, Homeowner</p>
+                </div>
+                <div class="testimonial-card">
+                    <p>"As a supplier, YASINOVA has given me access to quality buyers. Great platform!"</p>
+                    <p class="author">- Arjun Patel, Cement Supplier</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Start Your Project?</h2>
+            <p>Join thousands of builders and professionals on YASINOVA</p>
+            <a href="auth/signup.html" class="btn btn-large">Get Started Today</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About YASINOVA</h4>
+                    <p>India's leading construction materials marketplace connecting builders, suppliers, and professionals.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Us</h4>
+                    <p>Email: support@yasinova.com</p>
+                    <p>Phone: +91 1800 XXX XXXX</p>
+                    <p>Address: Mumbai, India</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <p>
+                        <a href="#">Facebook</a> |
+                        <a href="#">Twitter</a> |
+                        <a href="#">Instagram</a>
+                    </p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 YASINOVA. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>

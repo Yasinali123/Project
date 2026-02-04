@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketplace - YASINOVA Building Materials</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <style>
+        /* Marketplace Header */
+        .marketplace-header {
+            background: linear-gradient(135deg, #FF6B35 0%, #FF8C42 100%);
+            color: white;
+            padding: 3rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .marketplace-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .marketplace-header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        /* Search & Sort */
+        .search-sort-bar {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            display: grid;
+            grid-template-columns: 1fr 200px;
+            gap: 1rem;
+            align-items: end;
+        }
+
+        .search-input-group {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .search-input-group input {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .search-input-group button {
+            padding: 0.8rem 1.5rem;
+            background: #FF6B35;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .search-input-group button:hover {
+            background: #FF5520;
+        }
+
+        /* Main Content */
+        .marketplace-content {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        /* Filters Sidebar */
+        .filters-sidebar {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+        }
+
+        .filters-sidebar h3 {
+            color: #FF6B35;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            border-bottom: 2px solid #FF6B35;
+            padding-bottom: 0.5rem;
+        }
+
+        .filter-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .filter-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        .filter-group input[type="checkbox"],
+        .filter-group input[type="radio"] {
+            margin-right: 0.5rem;
+            cursor: pointer;
+        }
+
+        .filter-group input[type="text"],
+        .filter-group input[type="number"],
+        .filter-group select {
+            width: 100%;
+            padding: 0.6rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        .filter-group input:focus,
+        .filter-group select:focus {
+            outline: none;
+            border-color: #FF6B35;
+            box-shadow: 0 0 5px rgba(255, 107, 53, 0.3);
+        }
+
+        .apply-filters-btn {
+            width: 100%;
+            padding: 0.8rem;
+            background: #FF6B35;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .apply-filters-btn:hover {
+            background: #FF5520;
+        }
+
+        .clear-filters-btn {
+            width: 100%;
+            padding: 0.8rem;
+            background: #f0f0f0;
+            color: #333;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 0.5rem;
+            transition: 0.3s;
+        }
+
+        .clear-filters-btn:hover {
+            background: #e0e0e0;
+        }
+
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #FF6B35;
+            color: white;
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .product-info {
+            padding: 1rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-category {
+            font-size: 0.8rem;
+            color: #FF6B35;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 0.3rem;
+        }
+
+        .product-name {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+            min-height: 2.6rem;
+        }
+
+        .product-specs {
+            font-size: 0.8rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-seller {
+            font-size: 0.8rem;
+            color: #888;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-rating {
+            font-size: 0.85rem;
+            color: #FFA500;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #FF6B35;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-unit {
+            font-size: 0.8rem;
+            color: #666;
+            margin-bottom: 0.8rem;
+        }
+
+        .product-availability {
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-availability.in-stock {
+            color: #27AE60;
+        }
+
+        .product-availability.low-stock {
+            color: #E67E22;
+        }
+
+        .product-availability.out-stock {
+            color: #E74C3C;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: auto;
+        }
+
+        .product-actions a,
+        .product-actions button {
+            flex: 1;
+            padding: 0.6rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: 0.3s;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .view-btn {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .view-btn:hover {
+            background: #e0e0e0;
+        }
+
+        .add-btn {
+            background: #FF6B35;
+            color: white;
+        }
+
+        .add-btn:hover {
+            background: #FF5520;
+        }
+
+        /* Categories Section */
+        .categories-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .categories-section h3 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 1rem;
+        }
+
+        .category-card {
+            text-align: center;
+            padding: 1rem;
+            border: 2px solid #f0f0f0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .category-card:hover,
+        .category-card.active {
+            border-color: #FF6B35;
+            background: #FFF5F0;
+        }
+
+        .category-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .category-name {
+            font-weight: 600;
+            color: #333;
+            font-size: 0.9rem;
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+
+        .pagination a,
+        .pagination span {
+            padding: 0.6rem 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            text-decoration: none;
+            color: #FF6B35;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .pagination a:hover {
+            background: #FF6B35;
+            color: white;
+        }
+
+        .pagination .active {
+            background: #FF6B35;
+            color: white;
+            border-color: #FF6B35;
+        }
+
+        /* No Results */
+        .no-results {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: #666;
+        }
+
+        .no-results-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Loading State */
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .marketplace-content {
+                grid-template-columns: 1fr;
+            }
+
+            .filters-sidebar {
+                position: relative;
+                top: auto;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+
+            .search-sort-bar {
+                grid-template-columns: 1fr;
+            }
+
+            .marketplace-header h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-brand">
+                <h1><a href="index.html" style="color: inherit; text-decoration: none;">🏗️ YASINOVA</a></h1>
+                <p class="tagline">Building Materials Marketplace</p>
+            </div>
+            <ul class="navbar-menu" id="navbarMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html" class="active">Marketplace</a></li>
+                <li><a href="professionals.html">Professionals</a></li>
+                <li id="authMenu">
+                    <a href="auth/login.html">Login</a> | 
+                    <a href="auth/signup.html">Sign Up</a>
+                </li>
+                <li id="userMenu" style="display: none;">
+                    <a href="#" id="userDropdown">👤 Account ▼</a>
+                    <div class="dropdown-menu">
+                        <a href="dashboard.html">Dashboard</a>
+                        <a href="cart.html">🛒 Cart</a>
+                        <a href="orders.html">Orders</a>
+                        <a href="#" id="logoutBtn">Logout</a>
+                    </div>
+                </li>
+            </ul>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Marketplace Header -->
+    <div class="marketplace-header">
+        <div class="container">
+            <h1>🏪 Building Materials Marketplace</h1>
+            <p>Find Quality Materials for Your Construction Projects</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Categories Section -->
+        <div class="categories-section">
+            <h3>🎯 Popular Categories</h3>
+            <div class="categories-grid">
+                <div class="category-card" onclick="filterByCategory('')">
+                    <div class="category-icon">📦</div>
+                    <div class="category-name">All Products</div>
+                </div>
+                <div class="category-card" onclick="filterByCategory('sand')">
+                    <div class="category-icon">🏜️</div>
+                    <div class="category-name">Sand</div>
+                </div>
+                <div class="category-card" onclick="filterByCategory('bricks')">
+                    <div class="category-icon">🧱</div>
+                    <div class="category-name">Bricks</div>
+                </div>
+                <div class="category-card" onclick="filterByCategory('cement')">
+                    <div class="category-icon">⚪</div>
+                    <div class="category-name">Cement</div>
+                </div>
+                <div class="category-card" onclick="filterByCategory('steel')">
+                    <div class="category-icon">🔩</div>
+                    <div class="category-name">Steel</div>
+                </div>
+                <div class="category-card" onclick="filterByCategory('mep')">
+                    <div class="category-icon">⚙️</div>
+                    <div class="category-name">MEP</div>
+                </div>
+                <div class="category-card" onclick="filterByCategory('interior')">
+                    <div class="category-icon">🎨</div>
+                    <div class="category-name">Interior</div>
+                </div>
+                <div class="category-card" onclick="filterByCategory('furniture')">
+                    <div class="category-icon">🪑</div>
+                    <div class="category-name">Furniture</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search and Sort Bar -->
+        <div class="search-sort-bar">
+            <div class="search-input-group">
+                <input type="text" id="searchInput" placeholder="Search products by name, type...">
+                <button onclick="applyFilters()">🔍 Search</button>
+            </div>
+            <select id="sortBy" onchange="applyFilters()">
+                <option value="">Sort By</option>
+                <option value="price_low">Price: Low to High</option>
+                <option value="price_high">Price: High to Low</option>
+                <option value="rating">Top Rated</option>
+                <option value="newest">Newest</option>
+            </select>
+        </div>
+
+        <!-- Main Content -->
+        <div class="marketplace-content">
+            <!-- Filters Sidebar -->
+            <div class="filters-sidebar">
+                <h3>🔍 Filters</h3>
+
+                <div class="filter-group">
+                    <label for="categoryFilter"><strong>Category</strong></label>
+                    <select id="categoryFilter" onchange="applyFilters()">
+                        <option value="">All Categories</option>
+                        <option value="sand">Sand</option>
+                        <option value="bricks">Bricks</option>
+                        <option value="cement">Cement</option>
+                        <option value="steel">Steel</option>
+                        <option value="crushed_stone">Crushed Stone</option>
+                        <option value="mep">MEP</option>
+                        <option value="interior">Interior</option>
+                        <option value="furniture">Furniture</option>
+                        <option value="autocad">AutoCAD Drawings</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="minPrice"><strong>Min Price (₹)</strong></label>
+                    <input type="number" id="minPrice" min="0" placeholder="0" onchange="applyFilters()">
+                </div>
+
+                <div class="filter-group">
+                    <label for="maxPrice"><strong>Max Price (₹)</strong></label>
+                    <input type="number" id="maxPrice" min="0" placeholder="100000" onchange="applyFilters()">
+                </div>
+
+                <div class="filter-group">
+                    <label><strong>Rating</strong></label>
+                    <label><input type="radio" name="rating" value="" onchange="applyFilters()"> All</label>
+                    <label><input type="radio" name="rating" value="4.5" onchange="applyFilters()"> ⭐ 4.5+</label>
+                    <label><input type="radio" name="rating" value="4" onchange="applyFilters()"> ⭐ 4+</label>
+                    <label><input type="radio" name="rating" value="3" onchange="applyFilters()"> ⭐ 3+</label>
+                </div>
+
+                <div class="filter-group">
+                    <label><strong>Availability</strong></label>
+                    <label><input type="checkbox" value="in_stock" onchange="applyFilters()"> In Stock</label>
+                    <label><input type="checkbox" value="coming_soon" onchange="applyFilters()"> Coming Soon</label>
+                </div>
+
+                <button class="apply-filters-btn" onclick="applyFilters()">✓ Apply Filters</button>
+                <button class="clear-filters-btn" onclick="clearFilters()">✕ Clear All</button>
+            </div>
+
+            <!-- Products Section -->
+            <div>
+                <div id="loadingMessage" class="loading" style="display: none;">⏳ Loading products...</div>
+                <div id="noResults" class="no-results" style="display: none;">
+                    <div class="no-results-icon">🔍</div>
+                    <h3>No Products Found</h3>
+                    <p>Try adjusting your filters or search criteria</p>
+                </div>
+                <div class="products-grid" id="productsContainer">
+                    <!-- Products will be loaded here -->
+                </div>
+                <div class="pagination" id="pagination">
+                    <!-- Pagination will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>🏗️ About YASINOVA</h4>
+                    <p>India's trusted marketplace for quality building materials and professional services.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>📱 Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Marketplace</a></li>
+                        <li><a href="professionals.html">Professionals</a></li>
+                        <li><a href="auth/login.html">Login</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>📞 Contact & Support</h4>
+                    <p>Email: support@yasinova.com</p>
+                    <p>Phone: +91-XXXX-XXXX-XXXX</p>
+                </div>
+                <div class="footer-section">
+                    <h4>🔒 Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Refund Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 YASINOVA. All rights reserved. | Building Dreams with Quality Materials</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/marketplace.js"></script>
+</body>
+</html>

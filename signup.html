@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - YASINOVA</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <style>
+        .auth-container {
+            max-width: 500px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+        .auth-container h2 {
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .role-selector {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .role-option {
+            padding: 1rem;
+            border: 2px solid var(--light-gray);
+            border-radius: var(--border-radius);
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .role-option input[type="radio"] {
+            display: none;
+        }
+        .role-option input[type="radio"]:checked + label {
+            color: var(--white);
+            background-color: var(--secondary-color);
+        }
+        .role-option:has(input[type="radio"]:checked) {
+            border-color: var(--secondary-color);
+            background-color: rgba(231, 76, 60, 0.1);
+        }
+        .role-option label {
+            display: block;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        .auth-link {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+        .auth-link a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-brand">
+                <h1>YASINOVA</h1>
+                <p class="tagline">Building Materials Marketplace</p>
+            </div>
+            <a href="../index.html" class="btn btn-secondary">Back to Home</a>
+        </div>
+    </nav>
+
+    <!-- Sign Up Form -->
+    <div class="auth-container">
+        <h2>Join YASINOVA</h2>
+        <form id="signupForm">
+            <div class="form-group">
+                <label>I am a:</label>
+                <div class="role-selector">
+                    <div class="role-option">
+                        <input type="radio" id="buyer" name="role" value="buyer" checked>
+                        <label for="buyer">Buyer 👷</label>
+                    </div>
+                    <div class="role-option">
+                        <input type="radio" id="seller" name="role" value="seller">
+                        <label for="seller">Seller 🏪</label>
+                    </div>
+                    <div class="role-option">
+                        <input type="radio" id="professional" name="role" value="professional">
+                        <label for="professional">Professional 👨‍💼</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="full_name">Full Name</label>
+                <input type="text" id="full_name" name="full_name" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+            <div class="form-group" id="companyNameField" style="display: none;">
+                <label for="company_name">Company Name</label>
+                <input type="text" id="company_name" name="company_name">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required minlength="6">
+            </div>
+            <div class="form-group">
+                <label for="confirm_password">Confirm Password</label>
+                <input type="password" id="confirm_password" name="confirm_password" required>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Sign Up</button>
+        </form>
+        <div class="auth-link">
+            Already have an account? <a href="login.html">Login here</a>
+        </div>
+    </div>
+
+    <script src="../js/config.js"></script>
+    <script src="../js/api.js"></script>
+    <script src="../js/auth.js"></script>
+    <script>
+        document.querySelectorAll('input[name="role"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                const companyField = document.getElementById('companyNameField');
+                if (this.value === 'seller') {
+                    companyField.style.display = 'block';
+                } else {
+                    companyField.style.display = 'none';
+                }
+            });
+        });
+
+        document.getElementById('signupForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm_password').value;
+            
+            if (password !== confirmPassword) {
+                alert('Passwords do not match');
+                return;
+            }
+            
+            const userData = {
+                username: document.getElementById('username').value,
+                email: document.getElementById('email').value,
+                password: password,
+                full_name: document.getElementById('full_name').value,
+                phone: document.getElementById('phone').value,
+                role: document.querySelector('input[name="role"]:checked').value,
+                company_name: document.getElementById('company_name').value
+            };
+            
+            try {
+                const response = await registerUser(userData);
+                saveToken(response.access_token);
+                saveCurrentUser(response.user);
+                alert('Sign up successful! Welcome to YASINOVA!');
+                window.location.href = '../index.html';
+            } catch (error) {
+                alert('Sign up failed: ' + error.message);
+            }
+        });
+    </script>
+</body>
+</html>

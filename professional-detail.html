@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Professional Details — YASINOVA</title>
+  <link rel="stylesheet" href="css/professional-detail.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a class="navbar-brand" href="index.html">
+        <span class="brand-icon">🏗️</span>
+        <span class="brand-text">YASINOVA</span>
+      </a>
+      
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="navbar-links" id="navMenu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="products.html" class="nav-link">Products</a></li>
+        <li><a href="professionals.html" class="nav-link">Professionals</a></li>
+        <li><a href="cart.html" class="nav-link"><span class="cart-icon">🛒</span> Cart</a></li>
+        <li class="nav-divider"></li>
+        <li><a href="auth/login.html" class="nav-link btn-login">Login</a></li>
+        <li><a href="auth/signup.html" class="nav-link btn-signup">Sign Up</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container detail-page">
+    
+    <!-- Back Button -->
+    <a href="professionals.html" class="back-btn">← Back to Professionals</a>
+
+    <!-- Profile Section -->
+    <section class="profile-hero">
+      <div class="profile-banner"></div>
+      <div class="profile-card">
+        <div class="avatar-large" id="avatar"></div>
+        <div class="profile-info">
+          <h1 id="name"></h1>
+          <div class="type-badge" id="type"></div>
+          <div class="verified-badge" id="verified" style="display:none">✓ Verified Professional</div>
+          <div class="meta-row">
+            <span id="city"></span>
+            <span id="experience"></span>
+          </div>
+        </div>
+        <div class="profile-actions">
+          <div class="rating-box">
+            <div class="stars" id="rating"></div>
+            <div class="review-count" id="reviews"></div>
+          </div>
+          <button class="btn btn-primary" onclick="contactProfessional()">Contact Now</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Content Grid -->
+    <div class="content-grid">
+      
+      <!-- Main Content -->
+      <section class="main-content">
+        
+        <!-- About -->
+        <div class="card-section">
+          <h2>About</h2>
+          <p id="bio"></p>
+        </div>
+
+        <!-- Specialties -->
+        <div class="card-section">
+          <h2>Specialties</h2>
+          <div class="specs-grid" id="specs"></div>
+        </div>
+
+        <!-- Details -->
+        <div class="card-section">
+          <h2>Details</h2>
+          <div class="details-table">
+            <div class="detail-item">
+              <span class="label">Consultation Fee</span>
+              <span class="value" id="fee"></span>
+            </div>
+            <div class="detail-item">
+              <span class="label">Experience</span>
+              <span class="value" id="exp"></span>
+            </div>
+            <div class="detail-item">
+              <span class="label">Status</span>
+              <span class="value" id="status"></span>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        
+        <!-- Contact Card -->
+        <div class="contact-card">
+          <h3>Get in Touch</h3>
+          <form id="contactForm">
+            <input type="text" placeholder="Your name" required>
+            <input type="email" placeholder="Your email" required>
+            <textarea placeholder="Message" rows="4" required></textarea>
+            <button type="submit" class="btn btn-primary w-100">Send Message</button>
+          </form>
+        </div>
+
+        <!-- Quick Info -->
+        <div class="info-card">
+          <h3>Quick Info</h3>
+          <div class="info-item">
+            <span>⭐ Rating</span>
+            <span id="quick-rating"></span>
+          </div>
+          <div class="info-item">
+            <span>📍 Location</span>
+            <span id="quick-city"></span>
+          </div>
+          <div class="info-item">
+            <span>💼 Type</span>
+            <span id="quick-type"></span>
+          </div>
+        </div>
+
+      </aside>
+
+    </div>
+
+    <!-- Similar Professionals -->
+    <section class="similar-section">
+      <h2>Similar Professionals</h2>
+      <div class="grid" id="similarGrid"></div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        
+        <div class="footer-col">
+          <h4>About YASINOVA</h4>
+          <ul>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#mission">Our Mission</a></li>
+            <li><a href="#blog">Blog</a></li>
+            <li><a href="#press">Press</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>For Professionals</h4>
+          <ul>
+            <li><a href="#become-pro">Become a Professional</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#resources">Resources</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#help">Help Center</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+            <li><a href="#safety">Safety & Trust</a></li>
+            <li><a href="#report">Report Issue</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <div class="social-links">
+            <a href="#facebook" class="social-icon" title="Facebook">f</a>
+            <a href="#twitter" class="social-icon" title="Twitter">𝕏</a>
+            <a href="#linkedin" class="social-icon" title="LinkedIn">in</a>
+            <a href="#instagram" class="social-icon" title="Instagram">📷</a>
+          </div>
+          <p class="contact-info">📞 +91 1234-567-890<br>📧 support@yasinova.com</p>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 YASINOVA Marketplace. All rights reserved.</p>
+        <div class="footer-links-bottom">
+          <a href="#privacy">Privacy Policy</a>
+          <a href="#terms">Terms of Service</a>
+          <a href="#cookies">Cookie Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/professional-detail.js"></script>
+</body>
+</html>
