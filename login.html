@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - YASINOVA</title>
-    <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="responsive.css">
     <style>
         .auth-container {
             max-width: 500px;
@@ -77,7 +77,7 @@
                 saveToken(response.access_token);
                 saveCurrentUser(response.user);
                 alert('Login successful!');
-                window.location.href = '../index.html';
+                window.location.href = 'index.html';
             } catch (error) {
                 alert('Login failed: ' + error.message);
             }
@@ -85,3 +85,4 @@
     </script>
 </body>
 </html>
+
