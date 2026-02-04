@@ -1,11 +1,11 @@
 // 3D Design gallery — loads from user-provided photos and videos
 const builtinData = [
-  {id:1,title:'Living Room',category:'interior',media:'photo',thumb:'images/living room.jpg',src:'images/living room.jpg',desc:'Modern living space design',tags:['living','interior']},
-  {id:2,title:'Bedroom',category:'interior',media:'photo',thumb:'images/bedroom.jpg',src:'images/bedroom.jpg',desc:'Cozy bedroom with textures',tags:['bedroom','interior']},
-  {id:3,title:'Exterior Facade',category:'exterior',media:'photo',thumb:'images/Facade.jpg',src:'images/Facade.jpg',desc:'Contemporary exterior facade',tags:['exterior']},
-  {id:4,title:'Kitchen Layout',category:'interior',media:'photo',thumb:'images/kitchen.jpg',src:'images/kitchen.jpg',desc:'Functional kitchen design',tags:['kitchen','interior']},
-  {id:5,title:'Floor Plan',category:'floorplan',media:'photo',thumb:'images/floorplan.jpg',src:'images/floorplan.jpg',desc:'3BHK floor plan layout',tags:['plan','layout']},
-  {id:6,title:'Villa Walkthrough',category:'exterior',media:'video',thumb:'images/Facade.jpg',src:'videos/walkthroughvdo.mp4',desc:'3D video walkthrough of a villa',tags:['video','walkthrough']}
+  {id:1,title:'Living Room',category:'interior',media:'photo',thumb:'living room.jpg',src:'living room.jpg',desc:'Modern living space design',tags:['living','interior']},
+  {id:2,title:'Bedroom',category:'interior',media:'photo',thumb:'bedroom.jpg',src:'bedroom.jpg',desc:'Cozy bedroom with textures',tags:['bedroom','interior']},
+  {id:3,title:'Exterior Facade',category:'exterior',media:'photo',thumb:'Facade.jpg',src:'Facade.jpg',desc:'Contemporary exterior facade',tags:['exterior']},
+  {id:4,title:'Kitchen Layout',category:'interior',media:'photo',thumb:'kitchen.jpg',src:'kitchen.jpg',desc:'Functional kitchen design',tags:['kitchen','interior']},
+  {id:5,title:'Floor Plan',category:'floorplan',media:'photo',thumb:'floorplan.jpg',src:'floorplan.jpg',desc:'3BHK floor plan layout',tags:['plan','layout']},
+  {id:6,title:'Villa Walkthrough',category:'exterior',media:'video',thumb:'Facade.jpg',src:'walkthroughvdo.mp4',desc:'3D video walkthrough of a villa',tags:['video','walkthrough']}
 ];
 
 let data = builtinData;
@@ -98,3 +98,4 @@ async function init(){
 }
 
 document.addEventListener('DOMContentLoaded', init);
+
