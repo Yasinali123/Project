@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Seller Signup - Yasinova</title>
+  <link rel="stylesheet" href="css/seller.css" />
+</head>
+<body>
+  <div class="seller-container">
+    <div class="signup-wrapper">
+      <div class="signup-header">
+        <a href="index.html" class="logo">Yasinova</a>
+        <h1>Become a Seller</h1>
+        <p>Grow your business with Yasinova</p>
+      </div>
+
+      <form id="sellerSignupForm" class="signup-form">
+        <!-- Business Information Section -->
+        <fieldset class="form-section">
+          <legend>Business Information</legend>
+          
+          <div class="form-group">
+            <label for="businessName">Business/Shop Name *</label>
+            <input
+              type="text"
+              id="businessName"
+              name="businessName"
+              placeholder="Enter your business name"
+              required
+            />
+            <span class="error-message" id="businessNameError"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="ownerName">Owner Name *</label>
+            <input
+              type="text"
+              id="ownerName"
+              name="ownerName"
+              placeholder="Enter full name"
+              required
+            />
+            <span class="error-message" id="ownerNameError"></span>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="category">Business Category *</label>
+              <select id="category" name="category" required>
+                <option value="">Select a category</option>
+                <option value="cement">Cement & Building Materials</option>
+                <option value="steel">Steel & Metal Products</option>
+                <option value="mep">MEP (Mechanical, Electrical, Plumbing)</option>
+                <option value="bricks">Bricks & Blocks</option>
+                <option value="interior">Interior Design & Decor</option>
+                <option value="furniture">Furniture</option>
+                <option value="other">Other</option>
+              </select>
+              <span class="error-message" id="categoryError"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="gstNumber">GST Number *</label>
+              <input
+                type="text"
+                id="gstNumber"
+                name="gstNumber"
+                placeholder="22AAAAA0000A1Z5"
+                required
+              />
+              <span class="error-message" id="gstNumberError"></span>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Location Section -->
+        <fieldset class="form-section">
+          <legend>Location Details</legend>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="state">State *</label>
+              <select id="state" name="state" required>
+                <option value="">Select state</option>
+                <option value="AP">Andhra Pradesh</option>
+                <option value="AR">Arunachal Pradesh</option>
+                <option value="AS">Assam</option>
+                <option value="BR">Bihar</option>
+                <option value="CG">Chhattisgarh</option>
+                <option value="GA">Goa</option>
+                <option value="GJ">Gujarat</option>
+                <option value="HR">Haryana</option>
+                <option value="HP">Himachal Pradesh</option>
+                <option value="JK">Jammu & Kashmir</option>
+                <option value="JH">Jharkhand</option>
+                <option value="KA">Karnataka</option>
+                <option value="KL">Kerala</option>
+                <option value="MP">Madhya Pradesh</option>
+                <option value="MH">Maharashtra</option>
+                <option value="MN">Manipur</option>
+                <option value="ML">Meghalaya</option>
+                <option value="MZ">Mizoram</option>
+                <option value="NL">Nagaland</option>
+                <option value="OR">Odisha</option>
+                <option value="PB">Punjab</option>
+                <option value="RJ">Rajasthan</option>
+                <option value="SK">Sikkim</option>
+                <option value="TN">Tamil Nadu</option>
+                <option value="TG">Telangana</option>
+                <option value="TR">Tripura</option>
+                <option value="UP">Uttar Pradesh</option>
+                <option value="UK">Uttarakhand</option>
+                <option value="WB">West Bengal</option>
+              </select>
+              <span class="error-message" id="stateError"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="city">City *</label>
+              <input
+                type="text"
+                id="city"
+                name="city"
+                placeholder="Enter your city"
+                required
+              />
+              <span class="error-message" id="cityError"></span>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Contact Information Section -->
+        <fieldset class="form-section">
+          <legend>Contact Information</legend>
+          
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="your@email.com"
+              required
+            />
+            <span class="error-message" id="emailError"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone Number *</label>
+            <div class="phone-input-group">
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="10 digit mobile number"
+                maxlength="10"
+                required
+              />
+              <button type="button" class="btn-secondary" id="sendOtpBtn">Send OTP</button>
+            </div>
+            <span class="error-message" id="phoneError"></span>
+          </div>
+
+          <div class="form-group" id="otpGroup" style="display: none;">
+            <label for="otp">OTP *</label>
+            <div class="otp-input-group">
+              <input
+                type="text"
+                id="otp"
+                name="otp"
+                placeholder="Enter 6-digit OTP"
+                maxlength="6"
+              />
+              <span class="otp-timer" id="otpTimer"></span>
+            </div>
+            <span class="error-message" id="otpError"></span>
+          </div>
+        </fieldset>
+
+        <!-- Bank Details Section -->
+        <fieldset class="form-section">
+          <legend>Bank Details</legend>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="accountHolder">Account Holder Name *</label>
+              <input
+                type="text"
+                id="accountHolder"
+                name="accountHolder"
+                placeholder="Name as per bank account"
+                required
+              />
+              <span class="error-message" id="accountHolderError"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="accountNumber">Account Number *</label>
+              <input
+                type="text"
+                id="accountNumber"
+                name="accountNumber"
+                placeholder="Enter account number"
+                required
+              />
+              <span class="error-message" id="accountNumberError"></span>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="ifscCode">IFSC Code *</label>
+              <input
+                type="text"
+                id="ifscCode"
+                name="ifscCode"
+                placeholder="e.g., SBIN0001234"
+                maxlength="11"
+                required
+              />
+              <span class="error-message" id="ifscCodeError"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="bankName">Bank Name *</label>
+              <input
+                type="text"
+                id="bankName"
+                name="bankName"
+                placeholder="Enter bank name"
+                required
+              />
+              <span class="error-message" id="bankNameError"></span>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Security Section -->
+        <fieldset class="form-section">
+          <legend>Security</legend>
+          
+          <div class="form-group">
+            <label for="password">Password *</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Create a strong password"
+              required
+            />
+            <div class="password-strength">
+              <div class="strength-bar" id="strengthBar"></div>
+              <small id="strengthText"></small>
+            </div>
+            <span class="error-message" id="passwordError"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="confirmPassword">Confirm Password *</label>
+            <input
+              type="password"
+              id="confirmPassword"
+              name="confirmPassword"
+              placeholder="Re-enter your password"
+              required
+            />
+            <span class="error-message" id="confirmPasswordError"></span>
+          </div>
+        </fieldset>
+
+        <!-- Terms and Conditions -->
+        <div class="form-group checkbox-group">
+          <label>
+            <input type="checkbox" id="terms" name="terms" required />
+            I agree to the <a href="#">Terms and Conditions</a>
+          </label>
+          <span class="error-message" id="termsError"></span>
+        </div>
+
+        <button type="submit" class="btn-primary btn-large">Create Seller Account</button>
+
+        <p class="signin-link">
+          Already have an account? <a href="seller-login.html">Sign in here</a>
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/seller-signup.js" defer></script>
+</body>
+</html>

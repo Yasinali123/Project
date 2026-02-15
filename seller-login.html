@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Seller Login - Yasinova</title>
+  <link rel="stylesheet" href="css/seller.css" />
+</head>
+<body>
+  <div class="seller-container">
+    <div class="signup-wrapper" style="max-width: 500px;">
+      <div class="signup-header">
+        <a href="index.html" class="logo">Yasinova</a>
+        <h1>Seller Login</h1>
+        <p>Access your seller dashboard</p>
+      </div>
+
+      <form id="sellerLoginForm" class="signup-form">
+        <div class="form-section" style="background: transparent; border: none; padding: 0;">
+          <div class="form-group">
+            <label for="loginEmail">Email Address *</label>
+            <input
+              type="email"
+              id="loginEmail"
+              name="email"
+              placeholder="your@email.com"
+              required
+            />
+            <span class="error-message" id="emailError"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="loginPassword">Password *</label>
+            <input
+              type="password"
+              id="loginPassword"
+              name="password"
+              placeholder="Enter your password"
+              required
+            />
+            <span class="error-message" id="passwordError"></span>
+          </div>
+
+          <div class="form-group checkbox-group">
+            <label>
+              <input type="checkbox" id="rememberMe" name="rememberMe" />
+              Remember me
+            </label>
+          </div>
+
+          <button type="submit" class="btn-primary btn-large">Login to Dashboard</button>
+
+          <p class="signin-link">
+            Don't have an account? <a href="seller-signup.html">Create one here</a>
+          </p>
+
+          <p class="signin-link">
+            <a href="#" style="font-size: 13px;">Forgot password?</a>
+          </p>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/seller-login.js" defer></script>
+</body>
+</html>

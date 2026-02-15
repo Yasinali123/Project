@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Seller Dashboard - Yasinova</title>
+  <link rel="stylesheet" href="css/seller.css" />
+</head>
+<body>
+  <div class="seller-dashboard">
+    <!-- Header -->
+    <header class="dashboard-header">
+      <div class="header-content">
+        <a href="index.html" class="logo">Yasinova</a>
+        <h1 id="sellerName">Welcome, Seller</h1>
+      </div>
+      <button id="logoutBtn" class="btn-logout">Logout</button>
+    </header>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <nav class="nav-menu">
+        <a href="#dashboard" class="nav-item active" data-section="dashboard">
+          <span class="icon">📊</span>
+          <span>Dashboard</span>
+        </a>
+        <a href="#add-product" class="nav-item" data-section="add-product">
+          <span class="icon">➕</span>
+          <span>Add Product</span>
+        </a>
+        <a href="#my-products" class="nav-item" data-section="my-products">
+          <span class="icon">📦</span>
+          <span>My Products</span>
+        </a>
+        <a href="#orders" class="nav-item" data-section="orders">
+          <span class="icon">📋</span>
+          <span>Orders</span>
+        </a>
+        <a href="#profile" class="nav-item" data-section="profile">
+          <span class="icon">👤</span>
+          <span>Profile & Business Details</span>
+        </a>
+        <a href="#support" class="nav-item" data-section="support">
+          <span class="icon">💬</span>
+          <span>Support & Contact Admin</span>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="dashboard-content">
+      <!-- Dashboard Section -->
+      <section id="dashboard" class="section active">
+        <div class="section-header">
+          <h2>Dashboard Overview</h2>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon">📦</div>
+            <div class="stat-info">
+              <div class="stat-label">Total Products</div>
+              <div class="stat-value" id="totalProducts">0</div>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon">📋</div>
+            <div class="stat-info">
+              <div class="stat-label">Total Orders</div>
+              <div class="stat-value" id="totalOrders">0</div>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon">⏳</div>
+            <div class="stat-info">
+              <div class="stat-label">Pending Approval</div>
+              <div class="stat-value" id="pendingApproval">0</div>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon">✅</div>
+            <div class="stat-info">
+              <div class="stat-label">Active Products</div>
+              <div class="stat-value" id="activeProducts">0</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dashboard-actions">
+          <a href="#add-product" class="btn-primary action-btn">
+            <span class="icon">➕</span> Add New Product
+          </a>
+          <a href="#my-products" class="btn-secondary action-btn">
+            <span class="icon">📦</span> View My Products
+          </a>
+          <a href="#orders" class="btn-secondary action-btn">
+            <span class="icon">📋</span> View Orders
+          </a>
+        </div>
+
+        <div class="recent-section">
+          <h3>Recent Orders</h3>
+          <div id="recentOrders" class="orders-list">
+            <p class="empty-state">No orders yet</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Add Product Section -->
+      <section id="add-product" class="section">
+        <div class="section-header">
+          <h2>Add New Product</h2>
+        </div>
+
+        <form id="addProductForm" class="product-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="productName">Product Name *</label>
+              <input
+                type="text"
+                id="productName"
+                name="productName"
+                placeholder="Enter product name"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="productCategory">Category *</label>
+              <select id="productCategory" name="productCategory" required>
+                <option value="">Select category</option>
+                <option value="cement">Cement & Building Materials</option>
+                <option value="steel">Steel & Metal Products</option>
+                <option value="mep">MEP (Mechanical, Electrical, Plumbing)</option>
+                <option value="bricks">Bricks & Blocks</option>
+                <option value="interior">Interior Design & Decor</option>
+                <option value="furniture">Furniture</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="productPrice">Price (₹) *</label>
+              <input
+                type="number"
+                id="productPrice"
+                name="productPrice"
+                placeholder="0.00"
+                step="0.01"
+                min="0"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="stockQuantity">Stock Quantity *</label>
+              <input
+                type="number"
+                id="stockQuantity"
+                name="stockQuantity"
+                placeholder="Enter quantity"
+                min="0"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Product Images (1-5) *</label>
+            <div class="image-upload">
+              <div class="upload-area" id="uploadArea">
+                <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <polyline points="17 8 12 3 7 8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <line x1="12" y1="3" x2="12" y2="15" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <p>Drag images here or <span class="link">click to upload</span></p>
+                <small>Maximum 5 images, each up to 5MB</small>
+                <input type="file" id="productImages" name="productImages" accept="image/*" multiple hidden />
+              </div>
+              <div id="imagePreview" class="image-preview"></div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="productDescription">Product Description *</label>
+            <textarea
+              id="productDescription"
+              name="productDescription"
+              placeholder="Describe your product in detail"
+              rows="6"
+              required
+            ></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn-primary">Save & Submit for Approval</button>
+            <button type="reset" class="btn-secondary">Clear Form</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- My Products Section -->
+      <section id="my-products" class="section">
+        <div class="section-header">
+          <h2>My Products</h2>
+          <div class="filter-bar">
+            <select id="statusFilter">
+              <option value="all">All Status</option>
+              <option value="approved">Approved</option>
+              <option value="pending">Pending</option>
+              <option value="rejected">Rejected</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="productsList" class="products-grid">
+          <p class="empty-state">No products yet. <a href="#add-product">Add your first product</a></p>
+        </div>
+      </section>
+
+      <!-- Orders Section -->
+      <section id="orders" class="section">
+        <div class="section-header">
+          <h2>Orders</h2>
+        </div>
+
+        <div id="ordersList" class="orders-list">
+          <p class="empty-state">No orders yet</p>
+        </div>
+      </section>
+
+      <!-- Profile Section -->
+      <section id="profile" class="section">
+        <div class="section-header">
+          <h2>Business & Profile Details</h2>
+        </div>
+
+        <form id="profileForm" class="profile-form">
+          <div class="form-section">
+            <h3>Business Information</h3>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="profileBusinessName">Business Name</label>
+                <input type="text" id="profileBusinessName" readonly />
+              </div>
+              <div class="form-group">
+                <label for="profileOwnerName">Owner Name</label>
+                <input type="text" id="profileOwnerName" readonly />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="profileGST">GST Number</label>
+                <input type="text" id="profileGST" readonly />
+              </div>
+              <div class="form-group">
+                <label for="profileCategory">Category</label>
+                <input type="text" id="profileCategory" readonly />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="profileCity">City</label>
+                <input type="text" id="profileCity" readonly />
+              </div>
+              <div class="form-group">
+                <label for="profileState">State</label>
+                <input type="text" id="profileState" readonly />
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h3>Contact Information</h3>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="profileEmail">Email</label>
+                <input type="email" id="profileEmail" readonly />
+              </div>
+              <div class="form-group">
+                <label for="profilePhone">Phone</label>
+                <input type="tel" id="profilePhone" readonly />
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h3>Bank Details</h3>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="profileBankName">Bank Name</label>
+                <input type="text" id="profileBankName" readonly />
+              </div>
+              <div class="form-group">
+                <label for="profileAccountNumber">Account Number</label>
+                <input type="text" id="profileAccountNumber" readonly />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="profileIFSC">IFSC Code</label>
+                <input type="text" id="profileIFSC" readonly />
+              </div>
+              <div class="form-group">
+                <label for="profileAccountHolder">Account Holder</label>
+                <input type="text" id="profileAccountHolder" readonly />
+              </div>
+            </div>
+          </div>
+
+          <button type="button" class="btn-secondary" id="editProfileBtn">Edit Business Details</button>
+        </form>
+      </section>
+
+      <!-- Support Section -->
+      <section id="support" class="section">
+        <div class="section-header">
+          <h2>Support & Contact Admin</h2>
+        </div>
+
+        <div class="support-grid">
+          <div class="support-card">
+            <div class="support-icon">📧</div>
+            <h3>Email Support</h3>
+            <p>support@yasinova.com</p>
+            <button class="btn-secondary" onclick="window.location.href='mailto:support@yasinova.com'">Send Email</button>
+          </div>
+
+          <div class="support-card">
+            <div class="support-icon">📱</div>
+            <h3>Phone Support</h3>
+            <p>+91 1800-YASINOVA</p>
+            <button class="btn-secondary" onclick="window.location.href='tel:+911800974366'">Call Now</button>
+          </div>
+
+          <div class="support-card">
+            <div class="support-icon">💬</div>
+            <h3>Live Chat</h3>
+            <p>Available 9 AM - 6 PM IST</p>
+            <button class="btn-secondary" id="chatBtn">Start Chat</button>
+          </div>
+
+          <div class="support-card">
+            <div class="support-icon">📚</div>
+            <h3>Knowledge Base</h3>
+            <p>View FAQs and guides</p>
+            <button class="btn-secondary">Read Docs</button>
+          </div>
+        </div>
+
+        <div class="ticket-section">
+          <h3>Submit a Support Ticket</h3>
+          <form id="supportForm" class="support-form">
+            <div class="form-group">
+              <label for="ticketSubject">Subject *</label>
+              <input
+                type="text"
+                id="ticketSubject"
+                name="ticketSubject"
+                placeholder="Describe your issue"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="ticketCategory">Category *</label>
+              <select id="ticketCategory" name="ticketCategory" required>
+                <option value="">Select category</option>
+                <option value="product">Product Issue</option>
+                <option value="order">Order Issue</option>
+                <option value="payment">Payment Issue</option>
+                <option value="account">Account Issue</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="ticketMessage">Message *</label>
+              <textarea
+                id="ticketMessage"
+                name="ticketMessage"
+                placeholder="Describe your issue in detail"
+                rows="5"
+                required
+              ></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary">Submit Ticket</button>
+          </form>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="js/seller-dashboard.js" defer></script>
+</body>
+</html>
