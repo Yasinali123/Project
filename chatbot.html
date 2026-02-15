@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yasinova AI Assistant - Construction Materials & Design Expert</title>
+  <link rel="stylesheet" href="css/chatbot.css" />
+</head>
+<body>
+  <div class="chatbot-container">
+    <!-- Header -->
+    <header class="chatbot-header">
+      <div class="header-left">
+        <a href="index.html" class="logo">Yasinova</a>
+        <h1>AI Assistant</h1>
+        <p>Construction & Design Expert</p>
+      </div>
+      <button class="close-btn" onclick="window.history.back()">✕</button>
+    </header>
+
+    <!-- Main Content -->
+    <div class="chatbot-main">
+      <!-- Animated Character Section -->
+      <div class="character-section">
+        <div class="character-wrapper">
+          <div class="animated-character">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cdefs%3E%3Cstyle%3E@keyframes bounce{0%25,100%25{transform:translateY(0)}50%25{transform:translateY(-20px)}}@keyframes wave{0%25{transform:rotateZ(0deg)}25%25{transform:rotateZ(14deg)}75%25{transform:rotateZ(-14deg)}100%25{transform:rotateZ(0deg)}}.char-body{animation:bounce 2s infinite}.char-arm{animation:wave 2s infinite 0.3s;transform-origin:90%25 10%25}%3C/style%3E%3C/defs%3E%3C!-- Body --%3E%3Ccircle cx='100' cy='120' r='45' fill='%234f46e5' class='char-body'/%3E%3C!-- Head --%3E%3Ccircle cx='100' cy='60' r='35' fill='%234f46e5'/%3E%3C!-- Eyes --%3E%3Ccircle cx='90' cy='55' r='5' fill='white'/%3E%3Ccircle cx='110' cy='55' r='5' fill='white'/%3E%3Ccircle cx='90' cy='55' r='3' fill='%23000'/%3E%3Ccircle cx='110' cy='55' r='3' fill='%23000'/%3E%3C!-- Mouth --%3E%3Cpath d='M 90 70 Q 100 78 110 70' stroke='white' stroke-width='2' fill='none'/%3E%3C!-- Left Arm --%3E%3Crect x='55' y='100' width='20' height='50' rx='10' fill='%234f46e5' class='char-arm'/%3E%3C!-- Right Arm --%3E%3Crect x='125' y='100' width='20' height='50' rx='10' fill='%234f46e5' class='char-arm'/%3E%3C!-- Left Leg --%3E%3Crect x='80' y='160' width='15' height='35' rx='7' fill='%236366f1'/%3E%3C!-- Right Leg --%3E%3Crect x='105' y='160' width='15' height='35' rx='7' fill='%236366f1'/%3E%3C/svg%3E" alt="AI Assistant" class="character-img" />
+          </div>
+          <div class="character-message">Ask me anything about construction materials, interior designs, and more!</div>
+        </div>
+      </div>
+
+      <!-- Quick Questions -->
+      <div class="quick-questions">
+        <h3>Quick Questions</h3>
+        <div class="questions-grid">
+          <button class="quick-btn" onclick="sendQuickMessage('What are the best cement brands?')">Best Cement Brands</button>
+          <button class="quick-btn" onclick="sendQuickMessage('How to choose interior design for my home?')">Interior Design Tips</button>
+          <button class="quick-btn" onclick="sendQuickMessage('What is MEP in construction?')">MEP Basics</button>
+          <button class="quick-btn" onclick="sendQuickMessage('Steel vs Aluminum pipes - which is better?')">Steel vs Aluminum</button>
+          <button class="quick-btn" onclick="sendQuickMessage('Budget-friendly building materials')">Budget Materials</button>
+          <button class="quick-btn" onclick="sendQuickMessage('How to calculate material requirements?')">Material Calculation</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chat Section -->
+    <div class="chat-section">
+      <!-- Messages Container -->
+      <div class="messages-container" id="messagesContainer">
+        <div class="message bot-message">
+          <div class="message-content">
+            <p>👋 Hello! I'm your Yasinova AI Assistant. I can help you with information about construction materials, interior designs, MEP systems, and much more. What would you like to know?</p>
+          </div>
+          <span class="message-time">Just now</span>
+        </div>
+      </div>
+
+      <!-- Input Area -->
+      <div class="input-area">
+        <div class="input-wrapper">
+          <input 
+            type="text" 
+            id="messageInput" 
+            class="message-input" 
+            placeholder="Ask about construction materials, interior design, MEP..." 
+            autocomplete="off"
+          />
+          <button class="send-btn" id="sendBtn" onclick="sendMessage()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="22" y1="2" x2="11" y2="13"></line>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+            </svg>
+          </button>
+        </div>
+        <small class="helper-text">💡 Tip: Ask specific questions to get detailed answers</small>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/chatbot.js" defer></script>
+</body>
+</html>
