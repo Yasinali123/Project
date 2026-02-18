@@ -52,6 +52,7 @@ function getFilters(){
     q: $('search').value.trim().toLowerCase(),
     category: $('category').value,
     media: $('mediaType').value
+    style: $('design-style').value
   }
 }
 
@@ -60,6 +61,7 @@ function applyFilters(){
   filtered = data.filter(d=>{
     if(f.category!=='all' && d.category!==f.category) return false;
     if(f.media!=='all' && d.media!==f.media) return false;
+    if(f.style!=='all' && d.style!==f.style) return false;
     if(f.q){
       const hay = (d.title+' '+d.desc+' '+d.tags.join(' ')).toLowerCase();
       if(!hay.includes(f.q)) return false;
@@ -92,6 +94,7 @@ async function init(){
   renderGallery(data);
   $('search').addEventListener('input', debounce(applyFilters,250));
   $('category').addEventListener('change', applyFilters);
+   $('design-style').addEventListener('change', applyFilters);
   $('mediaType').addEventListener('change', applyFilters);
   $('clearFilters').addEventListener('click', ()=>{ $('search').value=''; $('category').value='all'; $('mediaType').value='all'; applyFilters(); });
   $('lbClose').addEventListener('click', closeLightbox);
@@ -100,6 +103,7 @@ async function init(){
 }
 
 document.addEventListener('DOMContentLoaded', init);
+
 
 
 
