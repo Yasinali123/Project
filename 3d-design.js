@@ -1,13 +1,13 @@
 // 3D Design gallery — loads from user-provided photos and videos
 const builtinData = [
-  {id:1,title:'Living Room',category:'interior',media:'photo',thumb:'living room.jpg',src:'living room.jpg',desc:'Modern living space design',tags:['living','interior']},
-  {id:2,title:'Bedroom',category:'interior',media:'photo',thumb:'bedroom.jpg',src:'bedroom.jpg',desc:'Cozy bedroom with textures',tags:['bedroom','interior']},
-  {id:3,title:'Exterior Facade',category:'exterior',media:'photo',thumb:'Facade.jpg',src:'Facade.jpg',desc:'Contemporary exterior facade',tags:['exterior']},
-  {id:4,title:'Kitchen Layout',category:'interior',media:'photo',thumb:'kitchen.jpg',src:'kitchen.jpg',desc:'Functional kitchen design',tags:['kitchen','interior']},
-  {id:5,title:'Floor Plan',category:'floorplan',media:'photo',thumb:'floorplan.jpg',src:'floorplan.jpg',desc:'3BHK floor plan layout',tags:['plan','layout']},
-  {id:6,title:'Villa Walkthrough',category:'exterior',media:'video',thumb:'Facade.jpg',src:'walkthroughvdo.mp4',desc:'3D video walkthrough of a villa',tags:['video','walkthrough']}
-  {id:9,title:'Climate-Adaptive Home',category:'exterior',media:'photo',thumb:'Facade.jpg',src:'Facade.jpg',desc:'Eco-friendly design with natural ventilation',tags:['climate','sustainable','exterior']},
-  {id:11,title:'Vastu Floor Plan',category:'floorplan',media:'photo',thumb:'floorplan.jpg',src:'floorplan.jpg',desc:'3D floor plan designed with Vastu principles',tags:['vastu','plan','layout'],}
+  {id:1,title:'Living Room',category:'interior',media:'photo',thumb:'living room.jpg',src:'living room.jpg',desc:'Modern living space design',tags:['living','interior'],style:'all'},
+  {id:2,title:'Bedroom',category:'interior',media:'photo',thumb:'bedroom.jpg',src:'bedroom.jpg',desc:'Cozy bedroom with textures',tags:['bedroom','interior'],style:'all'},
+  {id:3,title:'Exterior Facade',category:'exterior',media:'photo',thumb:'Facade.jpg',src:'Facade.jpg',desc:'Contemporary exterior facade',tags:['exterior'],style:'all'},
+  {id:4,title:'Kitchen Layout',category:'interior',media:'photo',thumb:'kitchen.jpg',src:'kitchen.jpg',desc:'Functional kitchen design',tags:['kitchen','interior'],style:'all'},
+  {id:5,title:'Floor Plan',category:'floorplan',media:'photo',thumb:'floorplan.jpg',src:'floorplan.jpg',desc:'3BHK floor plan layout',tags:['plan','layout'],style:'all'},
+  {id:6,title:'Villa Walkthrough',category:'exterior',media:'photo',thumb:'Facade.jpg',src:'Facade.jpg',desc:'3D video walkthrough of a villa',tags:['video','walkthrough'],style:'all'},
+  {id:9,title:'Climate-Adaptive Home',category:'exterior',media:'photo',thumb:'Facade.jpg',src:'Facade.jpg',desc:'Eco-friendly design with natural ventilation',tags:['climate','sustainable','exterior'],style:'climate'},
+  {id:11,title:'Vastu Floor Plan',category:'floorplan',media:'photo',thumb:'floorplan.jpg',src:'floorplan.jpg',desc:'3D floor plan designed with Vastu principles',tags:['vastu','plan','layout'],style:'vastu'}
 ];
 
 let data = builtinData;
@@ -15,7 +15,7 @@ let data = builtinData;
 // Try to load optional JSON index placed at `data/3d-gallery.json` (relative to the page)
 async function loadExternalData(){
   try{
-    const res = await fetch('data/3d-gallery.json');
+    const res = await fetch('3d-gallery.json');
     if(!res.ok) return;
     const j = await res.json();
     if(Array.isArray(j) && j.length) data = j;
@@ -51,7 +51,7 @@ function getFilters(){
   return {
     q: $('search').value.trim().toLowerCase(),
     category: $('category').value,
-    media: $('mediaType').value
+    media: $('mediaType').value,
     style: $('design-style').value
   }
 }
@@ -94,16 +94,13 @@ async function init(){
   renderGallery(data);
   $('search').addEventListener('input', debounce(applyFilters,250));
   $('category').addEventListener('change', applyFilters);
-   $('design-style').addEventListener('change', applyFilters);
   $('mediaType').addEventListener('change', applyFilters);
-  $('clearFilters').addEventListener('click', ()=>{ $('search').value=''; $('category').value='all'; $('mediaType').value='all'; applyFilters(); });
+  $('design-style').addEventListener('change', applyFilters);
+  $('clearFilters').addEventListener('click', ()=>{ $('search').value=''; $('category').value='all'; $('mediaType').value='all'; $('design-style').value='all'; applyFilters(); });
   $('lbClose').addEventListener('click', closeLightbox);
   document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeLightbox(); });
   $('lightbox').addEventListener('click', e=>{ if(e.target.id==='lightbox') closeLightbox(); });
 }
 
 document.addEventListener('DOMContentLoaded', init);
-
-
-
 
