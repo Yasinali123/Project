@@ -6,8 +6,8 @@ const builtinData = [
   {id:4,title:'Kitchen Layout',category:'interior',media:'photo',thumb:'kitchen.jpg',src:'kitchen.jpg',desc:'Functional kitchen design',tags:['kitchen','interior']},
   {id:5,title:'Floor Plan',category:'floorplan',media:'photo',thumb:'floorplan.jpg',src:'floorplan.jpg',desc:'3BHK floor plan layout',tags:['plan','layout']},
   {id:6,title:'Villa Walkthrough',category:'exterior',media:'video',thumb:'Facade.jpg',src:'walkthroughvdo.mp4',desc:'3D video walkthrough of a villa',tags:['video','walkthrough']}
-  {id:9,title:'Climate-Adaptive Home',category:'exterior',media:'photo',thumb:'Facade.jpg',src:'Facade.jpg',desc:'Eco-friendly design with natural ventilation',tags:['climate','sustainable','exterior'],style:'climate'},
-  {id:11,title:'Vastu Floor Plan',category:'floorplan',media:'photo',thumb:'floorplan.jpg',src:'floorplan.jpg',desc:'3D floor plan designed with Vastu principles',tags:['vastu','plan','layout'],style:'vastu'}
+  {id:9,title:'Climate-Adaptive Home',category:'exterior',media:'photo',thumb:'Facade.jpg',src:'Facade.jpg',desc:'Eco-friendly design with natural ventilation',tags:['climate','sustainable','exterior']},
+  {id:11,title:'Vastu Floor Plan',category:'floorplan',media:'photo',thumb:'floorplan.jpg',src:'floorplan.jpg',desc:'3D floor plan designed with Vastu principles',tags:['vastu','plan','layout'],}
 ];
 
 let data = builtinData;
@@ -100,5 +100,6 @@ async function init(){
 }
 
 document.addEventListener('DOMContentLoaded', init);
+
 
 
